@@ -14,8 +14,7 @@ ca-certificates apt-transport-https gnupg-curl && \
 rm -rf /var/lib/apt/lists/*
 
 # Install good package list
-RUN apt-get install -y vim htop screen clang-8 openssl perl automake zlibc bzip2 curl git libutf8proc2 gcc-6 r-base subversion postgresql sqlite gdb valgrind build-essential
-RUN apt-get install -y python3 python3-pip
+RUN apt-get update && apt-get install -y vim htop screen clang-8 openssl perl automake zlibc bzip2 curl git libutf8proc2 gcc-6 r-base subversion postgresql sqlite gdb valgrind build-essential python3 python3-pip
 
 # setup pytorch
 RUN pip3 install torch==1.4.0+cpu torchvision==0.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
