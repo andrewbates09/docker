@@ -9,12 +9,10 @@ ca-certificates apt-transport-https gnupg-curl && \
     apt-key adv --export --no-emit-version -a $NVIDIA_GPGKEY_FPR | tail -n +5 > cudasign.pub && \
     echo "$NVIDIA_GPGKEY_SUM  cudasign.pub" | sha256sum -c --strict - && rm cudasign.pub && \
     echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
-    echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list && \
-    apt-get purge --auto-remove -y gnupg-curl && \
-rm -rf /var/lib/apt/lists/*
+    echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list
 
 # Install good package list
-RUN apt-get update && apt-get install -y gnupg-curl vim htop screen clang-8 openssl perl automake zlibc bzip2 curl git libutf8proc2 gcc-6 r-base subversion postgresql sqlite gdb valgrind build-essential python3 python3-pip \
+RUN apt-get update && apt-get install -y vim htop screen clang-8 openssl perl automake zlibc bzip2 curl git libutf8proc2 gcc-6 r-base subversion postgresql sqlite gdb valgrind build-essential python3 python3-pip && \
     apt-get purge --auto-remove -y gnupg-curl && \
 rm -rf /var/lib/apt/lists/*
 
